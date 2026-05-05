@@ -22,3 +22,26 @@ class Ride:
 
     def __repr__(self):
         return f"ride details. Started {self.start_location} to {self.end_location}"
+    
+"""
+rider request e ki ki thake
+    1. ke request korche --rider
+    2. se kothay jane --end location
+"""
+
+class RideRequest:
+    def __init__(self, rider, end_location):
+        self.rider = rider
+        self.end_location = end_location
+
+class RideMatching:
+    def __init__(self, drivers):
+        self.available_drivers = drivers
+
+    def find_drivers(self, ride_request):
+        if len(self.available_drivers) > 0:
+            print("Locking for drivers...")
+            driver = self.available_drivers[0]
+            ride = Ride(ride_request.rider.current_location, ride_request.end_location)
+            driver.accept_ride(ride)
+            return ride
