@@ -2,7 +2,9 @@ from abc import ABC
 
 class Vehicle(ABC):
     speed = {
-        'car'
+        'car' : 50,
+        'bike' : 60,
+        'cng' : 15
     }
     def __init__(self,vehicle_type, license_plate, rate):
         self.vehicle_type = vehicle_type
