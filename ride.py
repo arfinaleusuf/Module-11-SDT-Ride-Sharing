@@ -23,7 +23,7 @@ class Ride:
         self.rider = None
         self.start_time = None
         self.end_time = None
-        self.estimated_fare = None
+        self.estimated_fare = self.calculate_fare(vehicle.vehicle_type)
         self.vehicle = vehicle
 
     def set_driver(self, driver):
@@ -32,10 +32,20 @@ class Ride:
     def start_ride(self):
         self.start_time = datetime.now()
     def end_ride(self):
-        self.end_time = datetime.mow()
+        self.end_time = datetime.now()
         self.rider.wallet -= self.estimated_fare
         self.driver.wallet += self.estimated_fare
 
+    # total fare
+    # 20 km gechi
+    def calculate_fare(self, distance, vehicle_type):
+        distance = 10
+        fare_par_km = {
+            'car' : 30,
+            'bike' : 20,
+            'cng' : 25
+        }
+        return distance * fare_par_km.get(vehicle_type)
     def __repr__(self):
         return f"ride details. Started {self.start_location} to {self.end_location}"
     
