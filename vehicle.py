@@ -13,7 +13,7 @@ class Vehicle(ABC):
         super().__init__()
         
 
-class car(Vehicle):
+class Car(Vehicle):
     def __init__(self, vehicle_type, license_plate, rate):
         super().__init__(vehicle_type, license_plate, rate)
 
