@@ -5,7 +5,7 @@ class User(ABC):
         self.name = name
         self.email = email
         self.nid = nid
-        self.walled = 0
+        self.wallet = 0
 
     @abstractmethod
     def display_profile(self):
@@ -34,11 +34,19 @@ class Rider(User):
         ride_request = RideRequest(self, destination)
         ride_matching = RideMatching(ride_sharing.drivers)
         ride = ride_matching.find_drivers(ride_request, vehicle_type)
+        ride.rider = self
         self.current_ride = ride
         print('YAY !! we got a ride')
 
     def show_current_ride(self):
-        print(self.current_ride)
+        print("Ride Details !!")
+        print(f"Ride : {self.name}")
+        print(f"Driver : {self.current_ride.driver.name}")
+        print(f"Selected car : {self.current_ride.vehicle.vehicle_type}")
+        print(f"Start location : {self.current_ride.start_location}")
+        print(f"End location : {self.current_ride.end_location}")
+        print(f"Total Cost : {self.current_ride.estimated_fare}")
+
 
 class Driver(User):
     def __init__(self, name, email, nid, current_location):
