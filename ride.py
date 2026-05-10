@@ -38,7 +38,7 @@ class Ride:
 
     # total fare
     # 20 km gechi
-    def calculate_fare(self, distance, vehicle_type):
+    def calculate_fare(self, vehicle_type):
         distance = 10
         fare_par_km = {
             'car' : 30,
@@ -72,7 +72,7 @@ class RideMatching:
             if vehicle_type == 'car':
                 vehicle = Car('car', 'abc456', 30)
             elif vehicle_type == 'bike':
-                vehicle = Bike('Motor bike', '1235bh', 50)
+                vehicle = Bike('bike', '1235bh', 50)
             ride = Ride(ride_request.rider.current_location, ride_request.end_location, vehicle)
 
             driver.accept_ride(ride)
